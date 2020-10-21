@@ -43,7 +43,7 @@ bot.on("message", async (message) => {
       case "p":
         let m = await message.channel.send("Pong 🏓");
         return m.edit(
-          `Pong 🏓\nBot latency is ${
+          `Pong 🏓\nLeaves is currently online and operational.\nBot latency is ${
             m.createdTimestamp - message.createdTimestamp
           }ms. Discord API Latency is ${bot.ws.ping}ms`
         );
@@ -82,7 +82,7 @@ bot.on("message", async (message) => {
           );
           /*embed.addField(
             "Like Leaves?",
-            "Please consider [upvoting Crewmate]() :smiley:\nOr you can [invite the bot to your own server!]()"
+            "Please consider [upvoting Leaves]() :smiley:\nOr you can [invite the bot to your own server!](https://discord.com/api/oauth2/authorize?client_id=767559534167851008&permissions=8192&scope=bot)"
           );*/
 
           embed.addField(
@@ -127,6 +127,11 @@ bot.on("message", async (message) => {
         }
         return message.channel.send(embed);
       case "test":
+        if (message.guild.id !== "767561170403328011") {
+          return message.reply(
+            "You can only run this command in the Leaves Bot Support server.\nhttps://discord.gg/nxsevKP"
+          );
+        }
         return deleteCMD(message.member);
     }
   }
@@ -135,10 +140,16 @@ bot.on("message", async (message) => {
 const deleteCMD = async (member) => {
   (await bot.guilds.fetch(member.guild.id)).channels.cache.map((c) => {
     try {
-      c.messages.fetch({ limit: 100 }).then((messages) => {
+      c.messages.fetch({ limit: 100 }).then(async (messages) => {
         messages
           .filter((m) => m.author.id === member.id)
           .map((m) => m.delete());
+
+        try {
+          await statcord.postCommand("DELETE", member.id);
+        } catch (e) {
+          console.log("Failed to post command stats to statcord");
+        }
       });
     } catch (e) {
       //no access to channel or incorrect perms
