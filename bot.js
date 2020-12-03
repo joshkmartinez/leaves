@@ -1,7 +1,6 @@
-require("./server")();
+//require("./server")();
 
 const { Client, MessageEmbed } = require("discord.js");
-const axios = require("axios");
 const Statcord = require("statcord.js");
 const config = require("./config");
 const commands = require("./help");
