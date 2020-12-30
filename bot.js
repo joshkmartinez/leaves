@@ -29,6 +29,7 @@ statcord.on("autopost-start", () => {
 });
 
 bot.on("message", async (message) => {
+  if (message.author.bot) return
   if (message.content.startsWith(config.prefix)) {
     let args = message.content.slice(config.prefix.length).split(" ");
     let command = args.shift().toLowerCase();
