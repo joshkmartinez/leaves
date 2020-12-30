@@ -1,4 +1,4 @@
-//require("./server")();
+require("./server")();
 
 const { Client, MessageEmbed } = require("discord.js");
 const Statcord = require("statcord.js");
