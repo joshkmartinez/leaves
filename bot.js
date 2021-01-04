@@ -6,7 +6,6 @@ const config = require("./config");
 const commands = require("./help");
 
 let bot = new Client({
-  fetchAllMembers: true, // Remove this bot is in large servers.
   presence: {
     status: "online",
     activity: {
