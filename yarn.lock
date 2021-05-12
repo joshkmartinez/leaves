@@ -317,19 +317,19 @@ destroy@~1.0.4:
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
   integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
 
-discord.js@^12.5.1:
-  version "12.5.1"
-  resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-12.5.1.tgz#992b45753e3815526a279914ccc281d3496f5990"
-  integrity sha512-VwZkVaUAIOB9mKdca0I5MefPMTQJTNg0qdgi1huF3iwsFwJ0L5s/Y69AQe+iPmjuV6j9rtKoG0Ta0n9vgEIL6w==
+discord.js@^12.5.3:
+  version "12.5.3"
+  resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-12.5.3.tgz#56820d473c24320871df9ea0bbc6b462f21cf85c"
+  integrity sha512-D3nkOa/pCkNyn6jLZnAiJApw2N9XrIsXUAdThf01i7yrEuqUmDGc7/CexVWwEcgbQR97XQ+mcnqJpmJ/92B4Aw==
   dependencies:
     "@discordjs/collection" "^0.1.6"
     "@discordjs/form-data" "^3.0.1"
     abort-controller "^3.0.0"
     node-fetch "^2.6.1"
-    prism-media "^1.2.2"
+    prism-media "^1.2.9"
     setimmediate "^1.0.5"
     tweetnacl "^1.0.3"
-    ws "^7.3.1"
+    ws "^7.4.4"
 
 dot-prop@^5.2.0:
   version "5.3.0"
@@ -338,10 +338,10 @@ dot-prop@^5.2.0:
   dependencies:
     is-obj "^2.0.0"
 
-dotenv@^8.2.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
-  integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
+dotenv@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-9.0.2.tgz#dacc20160935a37dea6364aa1bef819fb9b6ab05"
+  integrity sha512-I9OvvrHp4pIARv4+x9iuewrWycX6CcZtoAu1XrzPxc5UygMJXJZYmBsynku8IkrJwgypE5DGNjDPmPRhDCptUg==
 
 duplexer3@^0.1.4:
   version "0.1.4"
@@ -871,10 +871,10 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-prism-media@^1.2.2:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/prism-media/-/prism-media-1.2.3.tgz#37bbb11726674a73fe56a2df4de76aa91d2141b7"
-  integrity sha512-fSrR66n0l6roW9Rx4rSLMyTPTjRTiXy5RVqDOurACQ6si1rKHHKDU5gwBJoCsIV0R3o9gi+K50akl/qyw1C74A==
+prism-media@^1.2.9:
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/prism-media/-/prism-media-1.2.9.tgz#8d4f97b36efdfc82483eb8d3db64020767866f36"
+  integrity sha512-UHCYuqHipbTR1ZsXr5eg4JUmHER8Ss4YEb9Azn+9zzJ7/jlTtD1h0lc4g6tNx3eMlB8Mp6bfll0LPMAV4R6r3Q==
 
 proxy-addr@~2.0.5:
   version "2.0.6"
@@ -1033,10 +1033,10 @@ signal-exit@^3.0.2:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
   integrity sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==
 
-statcord.js@^3.1.7:
-  version "3.1.7"
-  resolved "https://registry.yarnpkg.com/statcord.js/-/statcord.js-3.1.7.tgz#d2affa39f91916635f3670f8033f5394160976d8"
-  integrity sha512-8LtGM3TNMPCz1RHTAVy7tf8ZfWOCVqM9GpM1K+Koyu63jPlPZEDD+wU5mv1VG2ffG2WOfoUKr+nOIvf9ybvMmQ==
+statcord.js@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/statcord.js/-/statcord.js-3.2.0.tgz#6087664ccc221fadf02284a312ebba8c4babb8ad"
+  integrity sha512-FN9t7Z+GitsD41vLvvvhAEGHWh7PbuZ1FLU4OO9wSDVUEA6ggZV6jki4gWpRnEAYAlO9avUmsTXCsRTKz9qUPg==
   dependencies:
     node-fetch "^2.6.0"
     systeminformation "^5.3.1"
@@ -1233,10 +1233,10 @@ write-file-atomic@^3.0.0:
     signal-exit "^3.0.2"
     typedarray-to-buffer "^3.1.5"
 
-ws@^7.3.1:
-  version "7.4.2"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.4.2.tgz#782100048e54eb36fe9843363ab1c68672b261dd"
-  integrity sha512-T4tewALS3+qsrpGI/8dqNMLIVdq/g/85U98HPMa6F0m6xTbvhXU6RCQLqPH3+SlomNV/LdY6RXEbBpMH6EOJnA==
+ws@^7.4.4:
+  version "7.4.5"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-7.4.5.tgz#a484dd851e9beb6fdb420027e3885e8ce48986c1"
+  integrity sha512-xzyu3hFvomRfXKH8vOFMU3OguG6oOvhXMo3xsGy3xWExqaM2dxBbVxuD99O7m3ZUFMvvscsZDqxfgMaRr/Nr1g==
 
 xdg-basedir@^4.0.0:
   version "4.0.0"
