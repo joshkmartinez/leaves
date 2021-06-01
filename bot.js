@@ -77,15 +77,15 @@ bot.on("message", async (message) => {
           );
           embed.addField(
             "What does Leaves do?",
-            "Leaves is a bot that deletes all the messages of a user once they leave a server.\n**The bot requires `MANAGE_MESSAGE` permissions in every channel that you would like it to operate it.**"
+            "Leaves deletes all a user's messages once they leave a server.\n**To enable <@767559534167851008>, the bot must be granted `MANAGE_MESSAGE` permissions in every channel that you would like it to operate it.**"
           );
           embed.addField(
             "Like Leaves?",
-            "Please consider [upvoting Leaves](https://discordbotlist.com/bots/leaves) :smiley:\nOr [inviting the bot to your own server!](https://discord.com/api/oauth2/authorize?client_id=767559534167851008&permissions=8192&scope=bot)"
+            "Please consider [upvoting Leaves](https://top.gg/bot/767559534167851008/vote) :smiley:\nOr [inviting the bot to your own server!](https://top.gg/bot/767559534167851008/invite/)"
           );
           embed.addField(
             "Need help?",
-            "[Join the Leaves Bot Support Server](https://discord.gg/nxsevKP)"
+            "[Join the Leaves Bot Support Server](https://discord.gg/4xCUX7ddgy)"
           );
         } else {
           if (
