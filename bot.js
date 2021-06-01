@@ -157,40 +157,43 @@ const purgeCMD = async (message, c = null, member = null) => {
     message = c.lastMessage;
   }
   //empty channel
-  if(!message){
+  if (!message) {
     return;
   }
 
   const channel = c ? c : message.channel;
-  let fetched;
 
   const dayDifference = (d1, d2) => {
     return Math.abs(
       parseInt((d2.getTime() - d1.getTime()) / (24 * 3600 * 1000))
     );
   };
+
+  let fetched;
   let err = false;
   do {
     if (err) {
       break;
     }
-    fetched = (await channel.messages.fetch({ limit: 100 }))
-      .filter((message) => {
+    fetched = (await channel.messages.fetch({ limit: 100 })).filter(
+      (message) => {
         if (dayDifference(new Date(), message.createdAt) < 14) {
           return message;
         }
-      })
-      .filter((m) => {
-        if (member) {
-          return m.author.id === member.id;
-        }
-        return false;
+      }
+    );
+
+    if (member) {
+      fetched = fetched.filter((m) => {
+        return m.author.id == member.id;
       });
-    await channel
+    }
+
+    channel
       .bulkDelete(fetched)
       .then(async () => {
         try {
-          await statcord.postCommand("DELETE", member.id);
+          await statcord.postCommand("DELETE", message.author.id);
         } catch (e) {
           console.log("Failed to post command stats to statcord");
         }
