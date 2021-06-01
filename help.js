@@ -8,5 +8,10 @@ module.exports = {
     aliases: ["p"],
     description: "Measures the bot's latency with discord.",
     format: "ping",
+  },
+  purge: {
+    aliases: [],
+    description: "Purges ALL messages in the channel from the past 2 weeks.",
+    format: "purge",
   }
 };

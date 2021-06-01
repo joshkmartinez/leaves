@@ -125,34 +125,85 @@ bot.on("message", async (message) => {
         }
         return message.channel.send(embed);
       case "test":
-        if (message.guild.id !== "767561170403328011") {
+        if (message.channel.id !== "784195601206083584") {
           return message.reply(
-            "You can only run this command in the Leaves Bot Support server.\nhttps://discord.gg/nxsevKP"
+            "You can only run this command in the <#784195601206083584> channel of the Leaves Bot Support server.\nhttps://discord.gg/4xCUX7ddgy"
           );
         }
         return deleteCMD(message.member);
+      case "purge":
+        //TODO: add confirmation
+        return purgeCMD(message);
     }
   }
 });
-
+//TODO: find out what perms are needed
 const deleteCMD = async (member) => {
-  (await bot.guilds.fetch(member.guild.id)).channels.cache.map((c) => {
-    try {
-      c.messages.fetch({ limit: 100 }).then(async (messages) => {
-        messages
-          .filter((m) => m.author.id === member.id)
-          .map((m) => m.delete());
+  bot.guilds
+    .fetch(member.guild.id)
+    .then((guild) => {
+      guild.channels.cache.map(async (c) => {
+        if (c.type == "text") {
+          await purgeCMD(null, c, member);
+        }
+      });
+    })
+    .catch((e) => {});
+};
 
+const purgeCMD = async (message, c = null, member = null) => {
+  //will error if channel has no messages
+  if (c) {
+    message = c.lastMessage;
+  }
+  //empty channel
+  if(!message){
+    return;
+  }
+
+  const channel = c ? c : message.channel;
+  let fetched;
+
+  const dayDifference = (d1, d2) => {
+    return Math.abs(
+      parseInt((d2.getTime() - d1.getTime()) / (24 * 3600 * 1000))
+    );
+  };
+  let err = false;
+  do {
+    if (err) {
+      break;
+    }
+    fetched = (await channel.messages.fetch({ limit: 100 }))
+      .filter((message) => {
+        if (dayDifference(new Date(), message.createdAt) < 14) {
+          return message;
+        }
+      })
+      .filter((m) => {
+        if (member) {
+          return m.author.id === member.id;
+        }
+        return false;
+      });
+    await channel
+      .bulkDelete(fetched)
+      .then(async () => {
         try {
           await statcord.postCommand("DELETE", member.id);
         } catch (e) {
           console.log("Failed to post command stats to statcord");
         }
+      })
+      .catch((e) => {
+        err = true;
+        if (!member) {
+          message.reply(
+            "Permissions error.\n<@767559534167851008> needs `MANAGE_MESSAGE` permissions in this channel to execute this command."
+          );
+        }
       });
-    } catch (e) {
-      //no access to channel or incorrect perms
-    }
-  });
+  } while (fetched.size >= 2);
 };
 
 bot.on("guildMemberRemove", (member) => {
