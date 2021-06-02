@@ -77,7 +77,7 @@ bot.on("message", async (message) => {
           );
           embed.addField(
             "What does Leaves do?",
-            "Leaves deletes all a user's messages once they leave a server.\n**To enable <@767559534167851008>, the bot must be granted `MANAGE_MESSAGE` permissions in every channel that you would like it to operate it.**"
+            "Leaves deletes all a user's messages once they are kicked, banned, or leave your server.\n**To enable <@767559534167851008>, the bot must be granted `MANAGE_MESSAGE` permissions in every channel that you would like it to operate it.**"
           );
           embed.addField(
             "Like Leaves?",
@@ -210,6 +210,10 @@ const purgeCMD = async (message, c = null, member = null) => {
 };
 
 bot.on("guildMemberRemove", (member) => {
+  return deleteCMD(member);
+});
+
+bot.on("guildBanAdd", (member) => {
   return deleteCMD(member);
 });
 
