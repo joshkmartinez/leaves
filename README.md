@@ -1,6 +1,6 @@
 # Leaves
 
-### A dead-simple bot that deletes a user's messages once they leave your discord server. No configuration required.
+### A dead-simple bot that deletes a user's messages once they are kicked, banned, or leave your discord server. No configuration required.
 #### [Invite](https://top.gg/bot/767559534167851008/invite/)  - [Support Server](https://discord.gg/4xCUX7ddgy)  
 Prefix: `leaves`  
 Commands:
