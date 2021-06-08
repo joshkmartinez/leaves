@@ -4,8 +4,8 @@
   "description": "",
   "main": "bot.js",
   "scripts": {
-    "dev": "nodemon bot.js",
-    "start": "node bot.js",
+    "dev": "nodemon sharding.js",
+    "start": "node sharding.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

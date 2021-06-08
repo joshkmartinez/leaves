@@ -1,5 +1,3 @@
-require("./server")();
-
 const { Client, MessageEmbed } = require("discord.js");
 const Statcord = require("statcord.js");
 const config = require("./config");
@@ -14,17 +12,9 @@ let bot = new Client({
     },
   },
 });
-const statcord = new Statcord.Client({
-  key: config.statcord,
-  client: bot,
-});
 
-bot.on("ready", async () => {
-  console.log(`Logged in as ${bot.user.tag}.`);
-  await statcord.autopost();
-});
-statcord.on("autopost-start", () => {
-  console.log("Started statcord autopost.");
+bot.on('ready', () => {
+  console.log(`Shard ${bot.shard.ids} ready (${bot.guilds.cache.size} guilds)`);
 });
 
 bot.on("message", async (message) => {
@@ -32,11 +22,9 @@ bot.on("message", async (message) => {
   if (message.content.toLowerCase().startsWith(config.prefix)) {
     let args = message.content.slice(config.prefix.length).split(" ");
     let command = args.shift().toLowerCase();
-    try {
-      await statcord.postCommand(command, message.author.id);
-    } catch (e) {
-      console.log("Failed to post command stats to statcord");
-    }
+
+    Statcord.ShardingClient.postCommand(command, message.author.id, bot);
+
     switch (command) {
       case "ping":
       case "p":
@@ -136,17 +124,25 @@ bot.on("message", async (message) => {
         //TODO: add confirmation
 
         const checkManageMessagePerms = (message) => {
-          if (message.channel.permissionsFor(message.member).has("MANAGE_MESSAGES")) {
+          if (
+            message.channel
+              .permissionsFor(message.member)
+              .has("MANAGE_MESSAGES")
+          ) {
             return true;
           }
           return false;
         };
 
-        if (message.channel.id === "784195601206083584" || checkManageMessagePerms(message)) {
+        if (
+          message.channel.id === "784195601206083584" ||
+          checkManageMessagePerms(message)
+        ) {
           return purgeCMD(message);
         }
-        return message.reply("You need `MANAGE_MESSAGE` permissions in order to run this command.")
-        
+        return message.reply(
+          "You need `MANAGE_MESSAGE` permissions in order to run this command."
+        );
     }
   }
 });
@@ -204,12 +200,8 @@ const purgeCMD = async (message, c = null, member = null) => {
 
     channel
       .bulkDelete(fetched)
-      .then(async () => {
-        try {
-          await statcord.postCommand("DELETE", message.author.id);
-        } catch (e) {
-          console.log("Failed to post command stats to statcord");
-        }
+      .then(() => {
+        Statcord.ShardingClient.postCommand("DELETE", message.author.id, bot);
       })
       .catch((e) => {
         err = true;
