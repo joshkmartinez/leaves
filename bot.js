@@ -134,11 +134,23 @@ bot.on("message", async (message) => {
         return deleteCMD(message.member);
       case "purge":
         //TODO: add confirmation
-        return purgeCMD(message);
+
+        const checkManageMessagePerms = (message) => {
+          if (message.channel.permissionsFor(message.member).has("MANAGE_MESSAGES")) {
+            return true;
+          }
+          return false;
+        };
+
+        if (message.channel.id === "784195601206083584" || checkManageMessagePerms(message)) {
+          return purgeCMD(message);
+        }
+        return message.reply("You need `MANAGE_MESSAGE` permissions in order to run this command.")
+        
     }
   }
 });
-//TODO: find out what perms are needed
+
 const deleteCMD = async (member) => {
   bot.guilds
     .fetch(member.guild.id)
