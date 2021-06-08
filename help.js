@@ -1,6 +1,6 @@
 module.exports = {
   help: {
-    aliases: ["h"],
+    aliases: ["h","commands"],
     description: "Shows the list of commands or help on a specified command.",
     format: "help [command-name]",
   },

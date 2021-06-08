@@ -49,6 +49,7 @@ bot.on("message", async (message) => {
 
       case "help":
       case "h":
+      case "commands":
         let embed = new MessageEmbed()
           .setTitle("Leaves Bot Commands")
           .setColor("#C0EFDB")
