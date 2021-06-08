@@ -10,7 +10,7 @@ module.exports = {
     format: "ping",
   },
   purge: {
-    aliases: [],
+    aliases: ["delete"],
     description: "Purges ALL messages in the channel from the past 2 weeks.",
     format: "purge",
   }
