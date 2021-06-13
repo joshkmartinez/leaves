@@ -23,10 +23,33 @@ bot.on("ready", () => {
     //'botsfordiscord.com': process.env.botsfordiscord_token,
     "discord.bots.gg": process.env.discordbotsgg_token,
     "discord.boats": process.env.discordboats_token,
-    "discordbotlist.com": process.env.discordbotlistcom_token,
+    "discordbotlist.scom": process.env.discordbotlistcom_token,
   };
 
-  blapi.handle(bot, botListAPIKeys, 60);
+  //post stats every hour
+  setInterval(() => {
+    bot.shard
+      .fetchClientValues("guilds.cache.size")
+      .then((shards) => {
+        const guildCount = shards.reduce((x, y) => x + y);
+        const shardCount = shards.length;
+        blapi.manualPost(
+          guildCount,
+          bot.user.id,
+          botListAPIKeys,
+          null,
+          shardCount,
+          null
+        );
+      })
+      .catch((err) => {
+        //stats will get posted from last shard
+        if (err.name.includes("SHARDING_IN_PROCESS")) {
+          return;
+        }
+        console.error(err);
+      });
+  }, 3600000);
 });
 
 bot.on("message", async (message) => {
