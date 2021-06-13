@@ -1,5 +1,6 @@
 const { Client, MessageEmbed } = require("discord.js");
 const Statcord = require("statcord.js");
+const blapi = require("blapi");
 const config = require("./config");
 const commands = require("./help");
 
@@ -13,8 +14,19 @@ let bot = new Client({
   },
 });
 
-bot.on('ready', () => {
+bot.on("ready", () => {
   console.log(`Shard ${bot.shard.ids} ready (${bot.guilds.cache.size} guilds)`);
+
+  const botListAPIKeys = {
+    "top.gg": process.env.topgg_token,
+    //'botlist.space': process.env.botlistspace_token,
+    //'botsfordiscord.com': process.env.botsfordiscord_token,
+    "discord.bots.gg": process.env.discordbotsgg_token,
+    "discord.boats": process.env.discordboats_token,
+    "discordbotlist.com": process.env.discordbotlistcom_token,
+  };
+
+  blapi.handle(bot, botListAPIKeys, 60);
 });
 
 bot.on("message", async (message) => {
