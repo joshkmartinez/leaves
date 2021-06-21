@@ -1,11 +1,11 @@
 module.exports = {
   help: {
-    aliases: ["h","commands"],
+    aliases: ["h","commands", "cmds", "cmd"],
     description: "Shows the list of commands or help on a specified command.",
     format: "help [command-name]",
   },
   ping: {
-    aliases: ["p"],
+    aliases: ["p", "pong"],
     description: "Measures the bot's latency with discord.",
     format: "ping",
   },

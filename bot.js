@@ -62,6 +62,7 @@ bot.on("message", async (message) => {
 
     switch (command) {
       case "ping":
+      case "pong":
       case "p":
         let m = await message.channel.send("Pong 🏓");
         return m.edit(
@@ -73,6 +74,8 @@ bot.on("message", async (message) => {
       case "help":
       case "h":
       case "commands":
+      case "cmds":
+      case "cmd":
         let embed = new MessageEmbed()
           .setTitle("Leaves Bot Commands")
           .setColor("#C0EFDB")
@@ -196,7 +199,6 @@ const deleteCMD = async (member) => {
 };
 
 const purgeCMD = async (message, c = null, member = null) => {
-  //will error if channel has no messages
   if (c) {
     message = c.lastMessage;
   }
