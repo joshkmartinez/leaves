@@ -161,11 +161,11 @@ bot.on("message", async (message) => {
       case "purge":
         //TODO: add confirmation
 
-        const checkManageMessagePerms = (message) => {
+        const checkAdminPerms = (message) => {
           if (
             message.channel
               .permissionsFor(message.member)
-              .has("MANAGE_MESSAGES")
+              .has("ADMINISTRATOR")
           ) {
             return true;
           }
@@ -174,12 +174,12 @@ bot.on("message", async (message) => {
 
         if (
           message.channel.id === "784195601206083584" ||
-          checkManageMessagePerms(message)
+          checkAdminPerms(message)
         ) {
           return purgeCMD(message);
         }
         return message.reply(
-          "You need `MANAGE_MESSAGE` permissions in order to run this command."
+          "You need `ADMINISTRATOR` permissions in order to run this command."
         );
     }
   }
