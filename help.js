@@ -11,7 +11,7 @@ module.exports = {
   },
   purge: {
     aliases: ["delete"],
-    description: "Purges ALL messages in the channel from the past 2 weeks.",
+    description: "Purges ALL messages in the channel from the past 2 weeks. Requires administrator permissions.",
     format: "purge",
   }
 };
